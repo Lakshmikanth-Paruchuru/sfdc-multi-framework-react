@@ -140,7 +140,7 @@ npm run build       # create a new production bundle (new content hash)
 sf project deploy start --source-dir force-app/main/account-dashboard --target-org <alias>
 ```
 
-> If you see a 404 for the JS file after deploying, it means `index.html` references a hash that no longer exists. Rebuild locally, redeploy, then hard-refresh the browser (Cmd+Shift+R / Ctrl+Shift+R).
+> If you see a 404 error in the Network tab once we landed on the App, it means `index.html` references a hash that no longer exists. Rebuild locally, redeploy, then hard-refresh the browser (Cmd+Shift+R / Ctrl+Shift+R).
 
 ---
 
