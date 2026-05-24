@@ -15,14 +15,14 @@ Renders a responsive grid of Account cards — Name, Industry, Annual Revenue, a
 ```mermaid
 flowchart TD
     A[Developer Machine] -->|npm run dev| B[Vite Dev Server]
-    B -->|Vite alias: mode=development| C[sdk-mock.ts\nFake accounts, no org needed]
+    B -->|Vite alias: mode=development| C["sdk-mock.ts<br>Fake accounts, no org needed"]
 
-    A -->|npm run build| D[Vite Production Build\ndist/index.html + dist/assets/*.js]
-    D -->|sf project deploy start| E[Salesforce Org\nUIBundle Metadata]
+    A -->|npm run build| D["Vite Production Build<br>dist/index.html + dist/assets/*.js"]
+    D -->|sf project deploy start| E["Salesforce Org<br>UIBundle Metadata"]
 
-    E --> F[App Launcher\nAccount Dashboard]
-    F -->|Real Salesforce session| G[@salesforce/sdk-data SDK]
-    G -->|UIAPI GraphQL| H[Salesforce Account Records]
+    E --> F["App Launcher<br>Account Dashboard"]
+    F -->|Real Salesforce session| G["@salesforce/sdk-data SDK"]
+    G -->|UIAPI GraphQL| H["Salesforce Account Records"]
     H --> F
 
     subgraph React Component [AccountDashboard.tsx]
