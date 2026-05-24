@@ -15,26 +15,26 @@ Renders a responsive grid of Account cards — Name, Industry, Annual Revenue, a
 ```mermaid
 flowchart TD
     A[Developer Machine] -->|npm run dev| B[Vite Dev Server]
-    B -->|Vite alias: mode=development| C["sdk-mock.ts<br>Fake accounts, no org needed"]
+    B -->|Vite alias: mode=development| C[sdk-mock.ts - Fake accounts, no org needed]
 
-    A -->|npm run build| D["Vite Production Build<br>dist/index.html + dist/assets/*.js"]
-    D -->|sf project deploy start| E["Salesforce Org<br>UIBundle Metadata"]
+    A -->|npm run build| D[Vite Production Build]
+    D -->|sf project deploy start| E[Salesforce Org - UIBundle Metadata]
 
-    E --> F["App Launcher<br>Account Dashboard"]
-    F -->|Real Salesforce session| G["@salesforce/sdk-data SDK"]
-    G -->|UIAPI GraphQL| H["Salesforce Account Records"]
+    E --> F[App Launcher - Account Dashboard]
+    F -->|Real Salesforce session| G[salesforce/sdk-data SDK]
+    G -->|UIAPI GraphQL| H[Salesforce Account Records]
     H --> F
 
-    subgraph React Component [AccountDashboard.tsx]
+    subgraph component [AccountDashboard.tsx]
         I[useEffect on mount] --> J[createDataSDK + graphql query]
         J --> K{Result?}
         K -->|loading| L[Loading accounts...]
-        K -->|error / GraphQL errors| M[Error message]
-        K -->|empty edges| N[No accounts found.]
+        K -->|error| M[Error message]
+        K -->|empty| N[No accounts found.]
         K -->|success| O[Account cards grid]
     end
 
-    F --> React Component
+    F --> I
 ```
 
 ---
